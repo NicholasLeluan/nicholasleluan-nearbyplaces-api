@@ -1,0 +1,7 @@
+dbname=dcn48ct9us88o 
+host=ec2-54-196-89-124.compute-1.amazonaws.com 
+port=5432 
+user=kvhmafnacjgunk 
+password=b72369a46385f7fdea55516905b81795fc67b2ba0d68c23ffa591fe35385bec1 
+sslmode=require"
+Posgres URL : postgres://kvhmafnacjgunk:b72369a46385f7fdea55516905b81795fc67b2ba0d68c23ffa5
