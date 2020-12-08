@@ -29,7 +29,6 @@ app.post('/place', (request,response) => {
 //Get all the places and their reviews....maybe do a JOIN where you get all the places
 // and their associated reviews all in one?
 app.get('/places' , (request,response) => {
-    console.log("in paces server");
     db.getPlaces().then(x => response.json(x))
     .catch(e => response.status(500).json({error: 'Quizzes could not be retrieved.'}));
 });
@@ -37,8 +36,8 @@ app.get('/places' , (request,response) => {
 //adds in a new review of the ID of the place. Insert this into the reviews table
 // the plaid foreign key will be this passed in id
 app.post('/review/:placeID', (request, response) => {
-    let placeID = request.body.id
-    let review = request.body.review
+    let placeID = request.body.id;
+    let review = request.body.review;
     db.addReview(placeID,review).then(x => response.json(x))
     .catch(e => response.status(500).json({error: 'SQL query for review was bad'}));
 

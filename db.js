@@ -72,7 +72,7 @@ function getDetails(id){
 }
 
 function addReview(id,review){
-    const command = `INSERT INTO nearbyplaces.reviews (review,score,placeid) VALUES = ('${review}',5,${parseInt(id)})`;
+    const command = `INSERT INTO nearbyplaces.reviews (review,score,placeid) VALUES ('${review}',5,${parseInt(id)})`;
     return postgrePool.query(command , (err,res) => {
         console.log("ADDED A REVIEW; CHECK SQL TABLE")
         response.status(200).json("added review")
