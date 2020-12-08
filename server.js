@@ -66,7 +66,7 @@ app.get('/search/:searchTerm/:location/:type' , (request, response) => {
 
 app.get('/detail/:placeID' , (request,response) => {
     let placeID = request.params.placeID;
-    db.getDetails(id).then(x => response.json(x))
+    db.getDetails(placeID).then(x => response.json(x))
     .catch(e => response.status(500).json({error: 'SQL query for detail was bad'}));
 })
 

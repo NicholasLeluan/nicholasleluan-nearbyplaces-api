@@ -59,7 +59,7 @@ function searchTermLoc(term,loc,type){
 }
 
 function getDetails(id){
-    const command = `SELECT * FROM nearbyplace.places,nearbyplaces.reviews WHERE nearbyplaces.places.id = ${id} 
+    const command = `SELECT * FROM nearbyplaces.places,nearbyplaces.reviews WHERE nearbyplaces.places.id = ${id} 
     AND nearbyplaces.places.id = nearbyplaces.reviews.placeid`
     return postgrePool.query(command)
     .then(result => {
