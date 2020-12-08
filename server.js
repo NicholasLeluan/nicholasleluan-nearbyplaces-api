@@ -29,8 +29,9 @@ app.post('/place', (request,response) => {
 //Get all the places and their reviews....maybe do a JOIN where you get all the places
 // and their associated reviews all in one?
 app.get('/places' , (request,response) => {
-    response.send('Here is where we get all the places and the reviews for each place')
     db.getPlaces()
+    .then(x => response.json(x))
+    .catch(e => response.status(500).json({error: 'Quizzes could not be retrieved.'}));
 
 });
 
