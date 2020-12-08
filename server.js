@@ -33,7 +33,8 @@ app.post('/place', (request,response) => {
     const open = request.body.open;
     const close = request.body.close;
     const keywords = request.body.keywords;
-    db.addBusiness(name,type,address,city,state,rating,open,close,keywords);
+    db.addBusiness(name,type,address,city,state,rating,open,close,keywords)
+    .catch(e => response.status(500).json({error: 'SQL query for post business was bad'}));
 });
 
 //Get all the places and their reviews....maybe do a JOIN where you get all the places

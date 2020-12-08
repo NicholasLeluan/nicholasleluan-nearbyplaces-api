@@ -80,9 +80,12 @@ function addReview(id,review){
 }
 
 function addBusiness(name,type,address,city,state,rating,open,close,keywords){
-    const command = `INSERT INTO nearbyplaces.places (name,type,address,city,state,rating,open,close,keywords) 
+    const command = `INSERT INTO nearbyplaces.places ("name","type",address,city,state,rating,"open","close",keywords) 
     VALUES (${name},${type},${address},${city},${state},${parseInt(rating)},${parseInt(open)},${parseInt(close)},${keywords})`;
-    return postgrePool.query(command);
+    return postgrePool.query(command , (err,res) => {
+        console.log("Added a new business");
+    })
+
 }
 
 module.exports = { getPlaces , getReviews, searchTermLoc, addReview , getDetails , addBusiness}
