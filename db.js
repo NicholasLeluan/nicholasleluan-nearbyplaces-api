@@ -58,8 +58,8 @@ function searchTermLoc(term,loc,type){
 
 }
 
-function getDetail(id){
-    const command = `SELECT * FROM nearbyplace.places,nearbyplaces.reviews WHERE places.id = ${id} 
+function getDetails(id){
+    const command = `SELECT * FROM nearbyplace.places,nearbyplaces.reviews WHERE nearbyplaces.places.id = ${id} 
     AND nearbyplaces.places.id = nearbyplaces.reviews.placeid`
     return postgrePool.query(command)
     .then(result => {
@@ -80,5 +80,5 @@ function addReview(id,review){
 
 }
 
-module.exports = { getPlaces , getReviews, searchTermLoc, addReview , getDetail}
+module.exports = { getPlaces , getReviews, searchTermLoc, addReview , getDetails}
 
