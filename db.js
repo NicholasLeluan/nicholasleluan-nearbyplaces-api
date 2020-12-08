@@ -18,7 +18,6 @@ postgrePool.connect()
 function getPlaces(){
         return postgrePool.query("SELECT * FROM nearbyplaces.places")
     .then(result => {
-        console.log(result);
         if (result.rows) {
             return result.rows;
         } else {
@@ -75,8 +74,7 @@ function addReview(id,review){
     console.log("FROM THE SERVER:", id,review);
     const command = `INSERT INTO nearbyplaces.reviews (review,score,placeid) VALUES ('${review}',5,${parseInt(id)})`;
     return postgrePool.query(command , (err,res) => {
-        console.log("ADDED A REVIEW; CHECK SQL TABLE")
-        res.status(200).json("added review")
+        console.log("ADDED A REVIEW; CHECK SQL TABLE");
     })
 
 }

@@ -40,7 +40,7 @@ app.post('/review/:placeID', (request, response) => {
     let placeID = request.body.id;
     let review = request.body.review;
     console.log(placeID, review);
-    db.addReview(placeID,review).then(x => response.json(x))
+    db.addReview(placeID,review)
     .catch(e => response.status(500).json({error: 'SQL query for review was bad'}));
 
 });
