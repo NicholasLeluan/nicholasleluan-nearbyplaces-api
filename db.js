@@ -17,7 +17,7 @@ postgrePool.connect()
 
 
 function getPlaces(){
-        return postgrePool.query("SELECT * FROM nerabypaces.places")
+        return postgrePool.query("SELECT * FROM nearbyplaces.places")
     .then(result => {
         console.log(result);
         if (result.rows) {
