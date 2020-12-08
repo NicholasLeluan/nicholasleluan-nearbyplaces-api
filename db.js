@@ -11,12 +11,16 @@ const postgreConnectionString =
 console.log(postgreConnectionString);
 const postgrePool = new Pool({
     connectionString: process.env.DATABASE_URL ? process.env.DATABASE_URL : postgreConnectionString,
-    ssl: { rejectUnauthorized: false }
+    ssl: true
 });
+
+console.log("Connecting")
+    postgrePool.connect().then(x => console.log("Connect Complete DB",x)).catch(e => console.log("caught error", e))
+console.log("Connected")
 
 function getPlaces() {
     console.log("HER:");
-    return postgrePool.query("select * from nearbyplaces.places")
+    return postgrePool.query("select * from nearbyplaces.places",(err,res))
     .then(result => {
         console.log(result);
         if (result.rows) {
