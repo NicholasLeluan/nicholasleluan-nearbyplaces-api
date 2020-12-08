@@ -7,7 +7,7 @@ const app = express();
 
 const port = process.env.PORT || 3002;
 
-
+console.log(db);
 //Middlewear
 app.use(cors()); //allows requests from anywhere to be accepted; this could accept specific IP addresses
 app.use(bodyParser.json()); //a request that comes in is converted from byte array to a JSON object
@@ -29,14 +29,11 @@ app.post('/place', (request,response) => {
 //Get all the places and their reviews....maybe do a JOIN where you get all the places
 // and their associated reviews all in one?
 app.get('/places' , (request,response) => {
-    db.getPlaces()
-    .then(x => response.json(x))
-    .catch(e => response.status(500).json({error: 'Quizzes could not be retrieved.'}));
-
+    db.data.getPlaces();
 });
 
 //adds in a new review of the ID of the place. Insert this into the reviews table
-// the placeid foreign key will be this passed in id
+// the plaid foreign key will be this passed in id
 app.post('/review/:placeID', (request, response) => {
     response.send('Here is where we add a review for a passed in place')
 
