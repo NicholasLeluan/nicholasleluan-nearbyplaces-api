@@ -17,7 +17,7 @@ const postgrePool = new Pool({
 
 function getPlaces() {
     console.log("HER:");
-    postgrePool.connect()
+    //postgrePool.connect()
     // return postgrePool.query("select * from nearbyplaces.places",(err,res))
     // .then(result => {
     //     console.log(result);
