@@ -8,11 +8,11 @@ console.log(process.env.POSTGRES_USER)
 const postgreConnectionString =
     `postgresql://${process.env.POSTGRES_USER}:${process.env.POSTGRES_PASSWORD}@${process.env.POSTGRES_HOST}:${process.env.POSTGRES_PORT}/${process.env.POSTGRES_DATABASE}`;
 
-console.log(postgreConnectionString);
-const postgrePool = new Pool({
-    connectionString: process.env.DATABASE_URL ? process.env.DATABASE_URL : postgreConnectionString,
-    ssl: { rejectUnauthorized: false }
-});
+// console.log(postgreConnectionString);
+// const postgrePool = new Pool({
+//     connectionString: process.env.DATABASE_URL ? process.env.DATABASE_URL : postgreConnectionString,
+//     ssl: { rejectUnauthorized: false }
+// });
 
 
 function getPlaces() {
