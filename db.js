@@ -15,7 +15,6 @@ const postgrePool = new Pool({
 
 postgrePool.connect()
 
-
 function getPlaces(){
         return postgrePool.query("SELECT * FROM nearbyplaces.places")
     .then(result => {
@@ -43,8 +42,10 @@ function getReviews(id){
 
 }
 
-function searchTermLoc(term,loc){
-    return postgrePool.query("SELECT * FROM nearbyplaces.places WHERE keywords LIKE '$1%'",[term])
+function searchTermLoc(term,loc,type){
+    const ation = loc.toUpperCase();
+    const command = `SELECT * FROM nearbyplaces.places WHERE keywords LIKE '${term}%' AND UPPER("type") LIKE '${type.toUpperCase()}%' AND UPPER(city) LIKE '${ation}%'`;
+    return postgrePool.query(command)
     .then(result => {
         console.log(result);
         if (result.rows) {
@@ -57,5 +58,14 @@ function searchTermLoc(term,loc){
 
 }
 
-module.exports = { getPlaces , getReviews, searchTermLoc }
+function addReview(id,review){
+    const command = `INSERT INTO nearbyplaces.reviews (review,score,placeid) VALUES = ('${review}',5,${parseInt(id)})`;
+    return postgrePool.query(command , (err,res) => {
+        console.log("ADDED A REVIEW; CHECK SQL TABLE")
+        response.status(200).json("added review")
+    })
+
+}
+
+module.exports = { getPlaces , getReviews, searchTermLoc, addReview }
 
