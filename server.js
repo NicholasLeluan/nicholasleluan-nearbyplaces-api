@@ -23,7 +23,17 @@ app.get('/', (request, response) => {
 // access fields by let place = request.body.variable where variable is the name
 // of the input from the frontend 
 app.post('/place', (request,response) => {
-    response.send('Here is where to post a new place')
+    const name = request.body.name;
+    const type = request.body.type;
+    const address = request.body.address;
+    const city = request.body.city;
+    const state = request.body.state;
+    const rating = request.body.rating;
+    const open = request.body.open;
+    const close = request.body.close;
+    const keywords = request.body.keywords;
+    db.addBusiness(name,type,address,city,state,rating,open,close,keywords)
+    .catch(e => response.status(500).json({error: 'SQL query for post business was bad'}));
 });
 
 //Get all the places and their reviews....maybe do a JOIN where you get all the places
