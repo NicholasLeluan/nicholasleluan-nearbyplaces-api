@@ -17,16 +17,16 @@ const postgrePool = new Pool({
 
 function getPlaces() {
     console.log("HER:");
-    //postgrePool.connect()
-    // return postgrePool.query("select * from nearbyplaces.places",(err,res))
-    // .then(result => {
-    //     console.log(result);
-    //     if (result.rows) {
-    //         return result.rows;
-    //     } else {
-    //         throw Error('The places could not be retrieved from the database.');
-    //     }
-    //});
+    postgrePool.connect()
+    return postgrePool.query("select * from nearbyplaces.places",(err,res))
+    .then(result => {
+        console.log(result);
+        if (result.rows) {
+            return result.rows;
+        } else {
+            throw Error('The places could not be retrieved from the database.');
+        }
+    });
 
 }
 //this will get the reviews for all the records in the reviews db that have the foreighn
