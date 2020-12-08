@@ -15,13 +15,13 @@ const postgrePool = new Pool({
 });
 
 function getPlaces() {
-    return postgrePool.query("SELECT * FROM nearbyplaces.places")
+    return postgrePool.query("SELECT * FROM nearbyplaces.places;")
     .then(result => {
         console.log(result);
         if (result.rows) {
             return result.rows;
         } else {
-            throw Error('The pces could not be retrieved from the database.');
+            throw Error('The places could not be retrieved from the database.');
         }
     });
 

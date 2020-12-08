@@ -15,8 +15,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
 app.get('/', (request, response) => {
-    response.send('Welme to NearbyPlaces API');
-    console.log(process.env.POSTGRES_USER)
+    response.send('Welcome to NearbyPlaces API');
 });
 
 
