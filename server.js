@@ -30,7 +30,8 @@ app.post('/place', (request,response) => {
 // and their associated reviews all in one?
 app.get('/places' , (request,response) => {
     console.log("in paces server");
-    db.data.getPlaces();
+    db.getPlaces().then(x => response.json(x))
+    .catch(e => response.status(500).json({error: 'Quizzes could not be retrieved.'}));
 });
 
 //adds in a new review of the ID of the place. Insert this into the reviews table
