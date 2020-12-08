@@ -40,7 +40,7 @@ app.post('/review/:placeID', (request, response) => {
     let placeID = request.body.id
     let review = request.body.review
     db.addReview(placeID,review).then(x => response.json(x))
-    .catch(e => response.status(500).json({error: 'Quizzes could not be retrieved.'}));
+    .catch(e => response.status(500).json({error: 'SQL query for review was bad'}));
 
 });
 
@@ -63,6 +63,12 @@ app.get('/search/:searchTerm/:location/:type' , (request, response) => {
     .catch(e => response.status(500).json({error: `SQL query could not be searched--> location: ${loc}, term: ${term}, type: ${type}`}));
 
 });
+
+app.get('/detail/:placeID' , (request,response) => {
+    let placeID = request.params.placeID;
+    db.getDetails(id).then(x => response.json(x))
+    .catch(e => response.status(500).json({error: 'SQL query for detail was bad'}));
+})
 
 //continously listening for a request to the above defined port.
 app.listen(port, () => {

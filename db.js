@@ -58,6 +58,19 @@ function searchTermLoc(term,loc,type){
 
 }
 
+function getDetail(id){
+    const command = `SELECT * FROM nearbyplace.places,nearbyplaces.reviews WHERE places.id = ${id} 
+    AND nearbyplaces.places.id = nearbyplaces.reviews.placeid`
+    return postgrePool.query(command)
+    .then(result => {
+        if(result.rows){
+            return result.rows;
+        } else{
+            throw Error('something happened in detail');
+        }
+    })
+}
+
 function addReview(id,review){
     const command = `INSERT INTO nearbyplaces.reviews (review,score,placeid) VALUES = ('${review}',5,${parseInt(id)})`;
     return postgrePool.query(command , (err,res) => {
@@ -67,5 +80,5 @@ function addReview(id,review){
 
 }
 
-module.exports = { getPlaces , getReviews, searchTermLoc, addReview }
+module.exports = { getPlaces , getReviews, searchTermLoc, addReview , getDetail}
 
