@@ -30,6 +30,7 @@ app.post('/place', (request,response) => {
 // and their associated reviews all in one?
 app.get('/places' , (request,response) => {
     response.send('Here is where we get all the places and the reviews for each place')
+    db.getPlaces()
 
 });
 
