@@ -43,5 +43,19 @@ function getReviews(id){
 
 }
 
-module.exports = { getPlaces , getReviews }
+function searchTermLoc(term,loc){
+    return postgrePool.query("SELECT * FROM nearbyplaces.places WHERE keywords LIKE '$1%'",[term])
+    .then(result => {
+        console.log(result);
+        if (result.rows) {
+            return result.rows;
+        } else {
+            throw Error('The imgae data could not be found in the database.');
+        }
+    });
+
+
+}
+
+module.exports = { getPlaces , getReviews, searchTermLoc }
 

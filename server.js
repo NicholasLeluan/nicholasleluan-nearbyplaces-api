@@ -38,15 +38,17 @@ app.get('/places' , (request,response) => {
 // the plaid foreign key will be this passed in id
 app.post('/review/:placeID', (request, response) => {
     let placeID = request.params.placeID;
-    db.getReviews(placeID).then(x => response.json(x))
-    .catch(e => response.status(500).json({error: 'Quizzes could not be retrieved.'}));
 
 });
 
 //Search within the places table and get any records that match the location (city), and
 //match a keyword ---> USE LIKE IN SQL!!
 app.get('/search/:searchTerm/:location' , (request, response) => {
+    let loc = request.params.location;
+    let term = request.params.searchTerm;
     response.send('Here is where we get the place based on the given location and searchTerm')
+    db.searchTermLoc(term,loc).then(x => response.json(x))
+    .catch(e => response.status(500).json({error: 'Quizzes could not be retrieved.'}));
 
 });
 
