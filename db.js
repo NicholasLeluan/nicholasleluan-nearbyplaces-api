@@ -15,7 +15,8 @@ const postgrePool = new Pool({
 });
 
 function getPlaces() {
-    return postgrePool.query("SELECT * FROM nearbyplaces.places;")
+    console.log("HER:");
+    return postgrePool.query("select * from nearbyplaces.places")
     .then(result => {
         console.log(result);
         if (result.rows) {
@@ -29,7 +30,7 @@ function getPlaces() {
 //this will get the reviews for all the records in the reviews db that have the foreighn
 //key placeID that match the pad in id
 function getReviews(id){
-    return postgrePool.query("SELECT * FROM nerabypaces.reviews WHERE placeid = $1",[id])
+    return postgrePool.query("SELECT * FROM nerabypaces.reviews WHERE placeid = $1;",[id])
     .then(result => {
         console.log(result);
         if (result.rows) {
