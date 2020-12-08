@@ -14,12 +14,10 @@ const postgrePool = new Pool({
     ssl: true
 });
 
-console.log("Connecting")
-    postgrePool.connect().then(x => console.log("Connect Complete DB",x)).catch(e => console.log("caught error", e))
-console.log("Connected")
 
 function getPlaces() {
     console.log("HER:");
+    postgrePool.connect()
     return postgrePool.query("select * from nearbyplaces.places",(err,res))
     .then(result => {
         console.log(result);
