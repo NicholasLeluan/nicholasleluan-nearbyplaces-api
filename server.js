@@ -29,6 +29,7 @@ app.post('/place', (request,response) => {
 //Get all the places and their reviews....maybe do a JOIN where you get all the places
 // and their associated reviews all in one?
 app.get('/places' , (request,response) => {
+    console.log("in paces server");
     db.data.getPlaces();
 });
 

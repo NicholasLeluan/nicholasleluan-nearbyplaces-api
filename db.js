@@ -16,10 +16,7 @@ const postgrePool = new Pool({
 postgrePool.connect()
 
 
-
-var methods = {
-    //GETPLACES()
-    getPlaces:  function() {
+function getPlaces(){
         return postgrePool.query("SELECT * FROM nerabypaces.places")
     .then(result => {
         console.log(result);
@@ -29,8 +26,6 @@ var methods = {
             throw Error('The imgae data could not be found in the database.');
         }
     });
-    },
-
 }
 
 //this will get the reviews for all the records in the reviews db that have the foreighn
@@ -48,5 +43,5 @@ function getReviews(id){
 
 }
 
-exports.data=  methods;
+module.exports = { getPlaces , getReviews }
 
