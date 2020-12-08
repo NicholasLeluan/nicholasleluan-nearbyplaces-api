@@ -37,12 +37,14 @@ app.get('/places' , (request,response) => {
 //adds in a new review of the ID of the place. Insert this into the reviews table
 // the plaid foreign key will be this passed in id
 app.post('/review/:placeID', (request, response) => {
-    response.send('Here is where we add a review for a passed in place')
+    let placeID = request.params.placeID;
+    db.getReviews(placeID).then(x => response.json(x))
+    .catch(e => response.status(500).json({error: 'Quizzes could not be retrieved.'}));
 
 });
 
 //Search within the places table and get any records that match the location (city), and
-//match a keyword ---> can you do a contain??
+//match a keyword ---> USE LIKE IN SQL!!
 app.get('/search/:searchTerm/:location' , (request, response) => {
     response.send('Here is where we get the place based on the given location and searchTerm')
 
