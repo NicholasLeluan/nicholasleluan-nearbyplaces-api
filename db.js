@@ -11,7 +11,7 @@ const postgreConnectionString =
 console.log(postgreConnectionString);
 const postgrePool = new Pool({
     connectionString: process.env.DATABASE_URL ? process.env.DATABASE_URL : postgreConnectionString,
-    ssl: true
+    ssl: { rejectUnauthorized: false }
 });
 
 

@@ -32,7 +32,7 @@ app.get('/places' , (request,response) => {
     //response.send('Here is where we get all the places and the reviews for each place')
     db.getPlaces()
     .then(x => response.json(x))
-    .catch(e => response.status(500).json({error: 'Quizzes could not be retrieved.'}));
+    .catch(e => response.status(200).json({error: 'Quizzes could not be retrieved.'}));
     response.send(x);
 
 });
