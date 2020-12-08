@@ -23,6 +23,7 @@ app.get('/', (request, response) => {
 // access fields by let place = request.body.variable where variable is the name
 // of the input from the frontend 
 app.post('/place', (request,response) => {
+    console.log("IN SERVER POST PLACE");
     const name = request.body.name;
     const type = request.body.type;
     const address = request.body.address;
