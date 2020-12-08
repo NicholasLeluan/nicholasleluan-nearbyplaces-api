@@ -36,8 +36,10 @@ app.get('/places' , (request,response) => {
 //adds in a new review of the ID of the place. Insert this into the reviews table
 // the plaid foreign key will be this passed in id
 app.post('/review/:placeID', (request, response) => {
+    console.log("REVIEW WAS CALLED:::")
     let placeID = request.body.id;
     let review = request.body.review;
+    console.log(placeID, review);
     db.addReview(placeID,review).then(x => response.json(x))
     .catch(e => response.status(500).json({error: 'SQL query for review was bad'}));
 
