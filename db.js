@@ -20,13 +20,13 @@ function getPlaces() {
         if (result.rows) {
             return result.rows;
         } else {
-            throw Error('The places could not be retrieved from the database.');
+            throw Error('The pces could not be retrieved from the database.');
         }
     });
 
 }
 //this will get the reviews for all the records in the reviews db that have the foreighn
-//key placeID that match the passed in id
+//key placeID that match the pad in id
 function getReviews(id){
     return postgrePool.query("SELECT * FROM nerabypaces.reviews WHERE placeid = $1",[id])
     .then(result => {
