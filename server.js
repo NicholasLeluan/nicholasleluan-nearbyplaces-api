@@ -30,7 +30,7 @@ app.post('/place', (request,response) => {
 // and their associated reviews all in one?
 app.get('/places' , (request,response) => {
     //response.send('Here is where we get all the places and the reviews for each place')
-    db.getPlaces()
+    response.send(db.getPlaces())
     // .then(x => response.json(x))
     // .catch(e => response.status(500).json({error: 'Quizzes could not be retrieved.'}));
     // response.send(x);
