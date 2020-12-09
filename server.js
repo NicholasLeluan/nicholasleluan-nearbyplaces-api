@@ -24,15 +24,16 @@ app.get('/', (request, response) => {
 // of the input from the frontend 
 app.post('/place', (request,response) => {
     console.log("IN SERVER POST PLACE");
-    const name = request.body.name;
-    const type = request.body.type;
-    const address = request.body.address;
-    const city = request.body.city;
-    const state = request.body.state;
-    const rating = request.body.rating;
-    const open = request.body.open;
-    const close = request.body.close;
-    const keywords = request.body.keywords;
+    let name = request.body.name;
+    let type = request.body.type;
+    let address = request.body.address;
+    let city = request.body.city;
+    let state = request.body.state;
+    let rating = request.body.rating;
+    let open = request.body.open;
+    let close = request.body.close;
+    let keywords = request.body.keywords;
+    console.log(name,type,address,city,state,rating,open,close,keywords);
     db.addBusiness(name,type,address,city,state,rating,open,close,keywords)
     .catch(e => response.status(500).json({error: 'SQL query for post business was bad'}));
 });
